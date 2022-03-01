@@ -27,7 +27,6 @@ namespace Kucoin.Net.Converters
             new KeyValuePair<BizType, string>(BizType.StakingProfits, _useCaps ? "" : "Staking Profits"),
             new KeyValuePair<BizType, string>(BizType.Transfer, _useCaps ? "TRANSFER" : "Transfer"),
             new KeyValuePair<BizType, string>(BizType.Withdrawal, _useCaps ? "WITHDRAW" : "Withdrawal"),
-
             new KeyValuePair<BizType, string>(BizType.AssetsTransferred, _useCaps ? "" : "Assets Transferred in After Upgrading"),
             new KeyValuePair<BizType, string>(BizType.VoteForCoin, _useCaps ? "" : "Vote for Coin"),
             new KeyValuePair<BizType, string>(BizType.KuCoinBonus, _useCaps ? "KUCOIN_BONUS" : "KuCoin Bonus"),
@@ -55,7 +54,6 @@ namespace Kucoin.Net.Converters
             new KeyValuePair<BizType, string>(BizType.VotingEarnings, _useCaps ? "" : "Voting Earnings"),
             new KeyValuePair<BizType, string>(BizType.RedemptionOfVoting, _useCaps ? "" : "Redemption of Voting"),
             new KeyValuePair<BizType, string>(BizType.Voting, _useCaps ? "" : "Voting"),
-
             new KeyValuePair<BizType, string>(BizType.CrossMargin, _useCaps ? "" : "Cross Margin"),
             new KeyValuePair<BizType, string>(BizType.MiningIncome, _useCaps ? "" : "Mining Income"),
             new KeyValuePair<BizType, string>(BizType.BankCardDeal, _useCaps ? "" : "Bank Card Deal"),

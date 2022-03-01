@@ -20,8 +20,10 @@ namespace Kucoin.Net.Objects.Models.Spot
         /// <summary>
         /// The quantity of the activity
         /// </summary>
+
         [JsonProperty("amount")]
         public decimal Quantity { get; set; }
+
         /// <summary>
         /// The remaining balance after the activity
         /// </summary>
@@ -58,6 +60,7 @@ namespace Kucoin.Net.Objects.Models.Spot
         /// The direction of the activity
         /// </summary>
         [JsonConverter(typeof(AccountDirectionConverter))]
+
         public AccountDirection Direction { get; set; }
     }
 

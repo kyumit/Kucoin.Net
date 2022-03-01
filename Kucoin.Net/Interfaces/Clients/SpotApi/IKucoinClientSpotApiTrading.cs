@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Kucoin.Net.Objects.Models;
 using Kucoin.Net.Objects.Models.Spot;
+using Kucoin.Net.Objects.Spot;
 
 namespace Kucoin.Net.Interfaces.Clients.SpotApi
 {
@@ -358,5 +359,10 @@ namespace Kucoin.Net.Interfaces.Clients.SpotApi
             string tradeId,
             decimal quantity,
             CancellationToken ct = default);
+
+            
+
+        public Task<WebCallResult<KucoinPaginated<KucoinRepayRecord>>> GetRepayRecord(string? currency = null, int? currentPage = null, int? pageSize = null, CancellationToken ct = default);
+        public Task<WebCallResult<KucoinPaginated<KucoinRepaidRecord>>> GetRepaymentRecord(string? currency = null, int? currentPage = null, int? pageSize = null, CancellationToken ct = default);
     }
 }

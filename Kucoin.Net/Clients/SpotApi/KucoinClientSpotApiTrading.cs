@@ -14,6 +14,7 @@ using Kucoin.Net.Objects.Models;
 using Kucoin.Net.Objects.Models.Spot;
 using Kucoin.Net.Interfaces.Clients.SpotApi;
 using CryptoExchange.Net.CommonObjects;
+using Kucoin.Net.Objects.Spot;
 
 namespace Kucoin.Net.Clients.SpotApi
 {
@@ -427,6 +428,40 @@ namespace Kucoin.Net.Clients.SpotApi
             };
 
             return await _baseClient.Execute(_baseClient.GetUri("margin/repay/single"), HttpMethod.Post, ct, parameters, true).ConfigureAwait(false);
+        }
+        
+        /*
+         * "tradeId": "1231141",
+            "currency": "USDT",
+            "accruedInterest": "0.22121",
+            "dailyIntRate": "0.0021",
+            "liability": "1.32121",
+            "maturityTime": "1544657947759",
+            "principal": "1.22121",
+            "repaidSize": "0",
+            "term": 7,
+            "createdAt": "1544657947759"
+         * */
+        public async Task<WebCallResult<KucoinPaginated<KucoinRepayRecord>>> GetRepayRecord(string? currency = null, int? currentPage = null, int? pageSize = null, CancellationToken ct = default)
+        {
+            pageSize?.ValidateIntBetween(nameof(pageSize), 10, 500);
+
+            var parameters = new Dictionary<string, object>();
+            parameters.AddOptionalParameter("currency", currency);
+            parameters.AddOptionalParameter("currentPage", currentPage);
+            parameters.AddOptionalParameter("pageSize", pageSize);
+            return await _baseClient.Execute<KucoinPaginated<KucoinRepayRecord>>(_baseClient.GetUri($"margin/borrow/outstanding"), HttpMethod.Get, ct, parameters, true).ConfigureAwait(false);
+        }
+
+        public async Task<WebCallResult<KucoinPaginated<KucoinRepaidRecord>>> GetRepaymentRecord(string? currency = null, int? currentPage = null, int? pageSize = null, CancellationToken ct = default)
+        {
+            pageSize?.ValidateIntBetween(nameof(pageSize), 10, 500);
+
+            var parameters = new Dictionary<string, object>();
+            parameters.AddOptionalParameter("currency", currency);
+            parameters.AddOptionalParameter("currentPage", currentPage);
+            parameters.AddOptionalParameter("pageSize", pageSize);
+            return await _baseClient.Execute<KucoinPaginated<KucoinRepaidRecord>>(_baseClient.GetUri($"margin/borrow/repaid"), HttpMethod.Get, ct, parameters, true).ConfigureAwait(false);
         }
     }
 }
