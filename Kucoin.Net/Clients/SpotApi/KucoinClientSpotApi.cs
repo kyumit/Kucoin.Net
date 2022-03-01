@@ -24,7 +24,7 @@ namespace Kucoin.Net.Clients.SpotApi
         private readonly KucoinClientOptions _options;
         private readonly Log _log;
 
-        internal static TimeSyncState TimeSyncState = new TimeSyncState();
+        internal static TimeSyncState TimeSyncState = new TimeSyncState("Spot Api");
 
         /// <summary>
         /// Event triggered when an order is placed via this client. Only available for Spot orders
@@ -185,8 +185,8 @@ namespace Kucoin.Net.Clients.SpotApi
             var order = await Trading.PlaceOrderAsync(symbol,
                 side == CommonOrderSide.Sell ? OrderSide.Sell : OrderSide.Buy,
                 type == CommonOrderType.Limit ? NewOrderType.Limit : NewOrderType.Market,
-                price, 
                 quantity,
+                price,
                 clientOrderId: clientOrderId,
                 ct: ct).ConfigureAwait(false);
             if (!order)
@@ -345,8 +345,8 @@ namespace Kucoin.Net.Clients.SpotApi
         internal Task<WebCallResult> Execute(Uri uri, HttpMethod method, CancellationToken ct, Dictionary<string, object>? parameters = null, bool signed = false)
          => _baseClient.Execute(this, uri, method, ct, parameters, signed);
 
-        internal Task<WebCallResult<T>> Execute<T>(Uri uri, HttpMethod method, CancellationToken ct, Dictionary<string, object>? parameters = null, bool signed = false, int weight = 1)
-         => _baseClient.Execute<T>(this, uri, method, ct, parameters, signed, weight);
+        internal Task<WebCallResult<T>> Execute<T>(Uri uri, HttpMethod method, CancellationToken ct, Dictionary<string, object>? parameters = null, bool signed = false, int weight = 1, bool ignoreRatelimit = false)
+         => _baseClient.Execute<T>(this, uri, method, ct, parameters, signed, weight, ignoreRatelimit: ignoreRatelimit);
 
         internal Uri GetUri(string path, int apiVersion = 1)
         {
@@ -360,7 +360,7 @@ namespace Kucoin.Net.Clients.SpotApi
 
         /// <inheritdoc />
         protected override TimeSyncInfo GetTimeSyncInfo()
-            => new TimeSyncInfo(_log, _options.SpotApiOptions.AutoTimestamp, TimeSyncState);
+            => new TimeSyncInfo(_log, _options.SpotApiOptions.AutoTimestamp, _options.SpotApiOptions.TimestampRecalculationInterval, TimeSyncState);
 
         /// <inheritdoc />
         public override TimeSpan GetTimeOffset()

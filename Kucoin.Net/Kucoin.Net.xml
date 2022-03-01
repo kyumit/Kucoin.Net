@@ -3180,13 +3180,11 @@
             ctor
             </summary>
         </member>
-        <member name="M:Kucoin.Net.Objects.KucoinClientOptions.Copy``1(``0,``0)">
+        <member name="M:Kucoin.Net.Objects.KucoinClientOptions.#ctor(Kucoin.Net.Objects.KucoinClientOptions)">
             <summary>
-            Copy the values of the def to the input
+            ctor
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="input"></param>
-            <param name="def"></param>
+            <param name="baseOn">Base the new options on other options</param>
         </member>
         <member name="T:Kucoin.Net.Objects.KucoinSocketClientOptions">
             <summary>
@@ -3216,13 +3214,11 @@
             ctor
             </summary>
         </member>
-        <member name="M:Kucoin.Net.Objects.KucoinSocketClientOptions.Copy``1(``0,``0)">
+        <member name="M:Kucoin.Net.Objects.KucoinSocketClientOptions.#ctor(Kucoin.Net.Objects.KucoinSocketClientOptions)">
             <summary>
-            Copy the values of the def to the input
+            ctor
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="input"></param>
-            <param name="def"></param>
+            <param name="baseOn">Base the new options on other options</param>
         </member>
         <member name="T:Kucoin.Net.Objects.KucoinRestApiClientOptions">
             <summary>
@@ -3243,14 +3239,12 @@
             </summary>
             <param name="baseAddress"></param>
         </member>
-        <member name="M:Kucoin.Net.Objects.KucoinRestApiClientOptions.#ctor(Kucoin.Net.Objects.KucoinRestApiClientOptions)">
+        <member name="M:Kucoin.Net.Objects.KucoinRestApiClientOptions.#ctor(Kucoin.Net.Objects.KucoinRestApiClientOptions,Kucoin.Net.Objects.KucoinRestApiClientOptions)">
             <summary>
             ctor
             </summary>
             <param name="baseOn"></param>
-        </member>
-        <member name="M:Kucoin.Net.Objects.KucoinRestApiClientOptions.Copy``1(``0,``0)">
-            <inhericdoc />
+            <param name="newValues"></param>
         </member>
         <member name="T:Kucoin.Net.Objects.KucoinSocketApiClientOptions">
             <summary>
@@ -3265,14 +3259,12 @@
             ctor
             </summary>
         </member>
-        <member name="M:Kucoin.Net.Objects.KucoinSocketApiClientOptions.#ctor(Kucoin.Net.Objects.KucoinSocketApiClientOptions)">
+        <member name="M:Kucoin.Net.Objects.KucoinSocketApiClientOptions.#ctor(Kucoin.Net.Objects.KucoinSocketApiClientOptions,Kucoin.Net.Objects.KucoinSocketApiClientOptions)">
             <summary>
             ctor
             </summary>
             <param name="baseOn"></param>
-        </member>
-        <member name="M:Kucoin.Net.Objects.KucoinSocketApiClientOptions.Copy``1(``0,``0)">
-            <inheritdoc />
+            <param name="newValues"></param>
         </member>
         <member name="T:Kucoin.Net.Objects.KucoinOrderBookOptions">
             <summary>
@@ -3534,6 +3526,11 @@
             Minimum price change
             </summary>
         </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.IndexPriceTickSize">
+            <summary>
+            Minimum index price change
+            </summary>
+        </member>
         <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.Type">
             <summary>
             Type of contract
@@ -3577,6 +3574,91 @@
         <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.PriceChange">
             <summary>
             24 hour change
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.FirstOpenDate">
+            <summary>
+            First open time
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.ExpireDate">
+            <summary>
+            Expire time
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.SettleDate">
+            <summary>
+            Settle time
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.SettleAsset">
+            <summary>
+            Settle asset
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.SettlementSymbol">
+            <summary>
+            Settlement symbol
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.SettlementFee">
+            <summary>
+            Settle fee
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.FundingFeeRate">
+            <summary>
+            Funding fee rate
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.PredictedFundingFeeRate">
+            <summary>
+            Predicted funding fee rate
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.NextFundingRateTime">
+            <summary>
+            Next funding rate time
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.SourceExchanges">
+            <summary>
+            Source exchanges
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.MarkPrice">
+            <summary>
+            Mark price
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.IndexPrice">
+            <summary>
+            Index price
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.LastTradePrice">
+            <summary>
+            Last traded price
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.PremiumsSymbol1M">
+            <summary>
+            Premium symbol
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.PremiumsSymbol8H">
+            <summary>
+            Premium symbol
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.FundingBaseSymbol1M">
+            <summary>
+            Funding base symbol
+            </summary>
+        </member>
+        <member name="P:Kucoin.Net.Objects.Models.Futures.KucoinContract.FundingQuoteSymbol1M">
+            <summary>
+            Funding quote symbol
             </summary>
         </member>
         <member name="T:Kucoin.Net.Objects.Models.Futures.KucoinFundingItem">
@@ -7214,8 +7296,10 @@
         <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinFuturesSymbolOrderBook.DoResyncAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinFuturesSymbolOrderBook.Dispose">
-            <inheritdoc />
+        <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinFuturesSymbolOrderBook.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
         </member>
         <member name="T:Kucoin.Net.SymbolOrderBooks.KucoinSpotSymbolOrderBook">
             <summary>
@@ -7235,8 +7319,10 @@
         <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinSpotSymbolOrderBook.DoResyncAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinSpotSymbolOrderBook.Dispose">
-            <inheritdoc />
+        <member name="M:Kucoin.Net.SymbolOrderBooks.KucoinSpotSymbolOrderBook.Dispose(System.Boolean)">
+            <summary>
+            Dispose
+            </summary>
         </member>
     </members>
 </doc>
